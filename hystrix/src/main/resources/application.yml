@@ -1,0 +1,29 @@
+server:
+  port: 8880
+
+spring:
+  application:
+    name: hystrix-dashboard
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/},${EUREKA_URL:http://localhost:8762/eureka/}
+
+turbine:
+  appConfig: add-song,delete-song,play-song,user-service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: ALWAYS
+
